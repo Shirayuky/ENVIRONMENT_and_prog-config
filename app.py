@@ -11,13 +11,13 @@ def environment_page():
     if os.environ.get('APP_CONFIG') == 'development':
         # то указываем путь
         app.config.from_pyfile('config/development.py')
-        title = os.environ.get('TITLE')
-        description = os.environ.get('DESCRIPTION')
+        title = app.config.get('TITLE')
+        description = app.config.get('DESCRIPTION')
         return f"<p>{title} - {description}</p>"
     else:
         app.config.from_pyfile('config/production.py')
-        title = os.environ.get('TITLE')
-        description = os.environ.get('DESCRIPTION')
+        title = app.config.get('TITLE')
+        description = app.config.get('DESCRIPTION')
         return f"<p>{title} - {description}</p>"
 
 
